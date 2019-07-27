@@ -1,0 +1,35 @@
+@{
+    ViewBag.Title = "Home Page";
+    string dateInput = "jul 27, 2019";
+    var endTime = DateTime.Parse(dateInput).AddSeconds(11111065);
+    var timeRemaining = TimeSpan.FromTicks(endTime.Ticks - DateTime.UtcNow.Ticks).TotalSeconds;
+
+}
+
+<div class="row">
+<div class="col-md-12"> 
+    <div><strong>Time Remaining :<span id="dayRemaining"></span>d:<span id="hourRemaining"></span>h:<span id="minRemaining"></span>m:<span id="secRemaining"></span>s</strong></div>
+</div>    
+</div>
+
+<script>
+    var remSeconds = @timeRemaining;
+
+    function startTick()
+    {
+        document.getElementById('secRemaining').innerText =  parseInt(remSeconds%60);
+        document.getElementById('minRemaining').innerText =  parseInt((remSeconds%3600)/60);
+        document.getElementById('hourRemaining').innerText =  parseInt((remSeconds%86400)/3600);
+        document.getElementById('dayRemaining').innerText =  parseInt((remSeconds%2073600)/86400);
+        var _tick = setInterval(function(){
+            remSeconds = remSeconds - 1;
+            document.getElementById('secRemaining').innerText =  parseInt(remSeconds%60);
+            document.getElementById('minRemaining').innerText =  parseInt((remSeconds%3600)/60);
+            document.getElementById('hourRemaining').innerText =  parseInt((remSeconds%86400)/3600);
+            document.getElementById('dayRemaining').innerText =  parseInt((remSeconds%2073600)/86400);
+        },1000);
+    }
+
+    startTick();
+
+</script>

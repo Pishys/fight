@@ -1,10 +1,4 @@
-@{
-    ViewBag.Title = "Home Page";
-    string dateInput = "jul 27, 2019";
-    var endTime = DateTime.Parse(dateInput).AddSeconds(11111065);
-    var timeRemaining = TimeSpan.FromTicks(endTime.Ticks - DateTime.UtcNow.Ticks).TotalSeconds;
 
-}
 
 <div class="row">
 <div class="col-md-12"> 
@@ -16,7 +10,11 @@
     var remSeconds = @timeRemaining;
 
     function startTick()
-    {
+    { 
+        string dateInput = "jul 27, 2019";
+    var endTime = DateTime.Parse(dateInput).AddSeconds(11111065);
+    var timeRemaining = TimeSpan.FromTicks(endTime.Ticks - DateTime.UtcNow.Ticks).TotalSeconds;
+
         document.getElementById('secRemaining').innerText =  parseInt(remSeconds%60);
         document.getElementById('minRemaining').innerText =  parseInt((remSeconds%3600)/60);
         document.getElementById('hourRemaining').innerText =  parseInt((remSeconds%86400)/3600);

@@ -11,7 +11,7 @@
 
     function startTick()
     { 
-        string dateInput = "jul 27, 2019";
+      string  dateInput = "jul 27, 2019";
     var endTime = DateTime.Parse(dateInput).AddSeconds(11111065);
     var timeRemaining = TimeSpan.FromTicks(endTime.Ticks - DateTime.UtcNow.Ticks).TotalSeconds;
 
